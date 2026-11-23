@@ -475,7 +475,7 @@ const scenarioResponses = [
     },
     {
         keywords: ["연락처", "이메일", "인스타", "sns", "커피챗", "문의", "메일", "전화"],
-        answer: "김진우 학생의 작업에 관심을 가져주셔서 감사합니다! 📧 이메일: arch.jinwoo@example.ac.kr | 📸 인스타그램: @arch_jinwoo 로 연락 주시면 상세한 포트폴리오 질의응답이나 커피챗이 가능합니다."
+        answer: "건축학과 윤태일 학생의 작업에 관심을 가져주셔서 감사합니다! 📧 이메일: arch.taeil@example.ac.kr | 📸 인스타그램: @arch_taeil 로 연락 주시면 상세한 포트폴리오 질의응답이나 커피챗이 가능합니다."
     }
 ];
 

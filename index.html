@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JINWOO KIM | Architectural Portfolio</title>
+    <title>건축학과 윤태일 | Architectural Portfolio</title>
     <!-- Google Fonts: Space Grotesk & Pretendard fallback -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
     <!-- Navigation Header -->
     <header class="header">
         <div class="logo">
-            <span class="logo-bold">ARCHI</span><span class="logo-light">FOLIO</span>
+            <span class="logo-bold">건축학과</span><span class="logo-light"> 윤태일</span>
             <span class="badge">STUDIO 2026</span>
         </div>
         <nav class="nav">
@@ -38,13 +38,13 @@
         <!-- Hero Section -->
         <section class="hero" id="about">
             <div class="hero-content">
-                <p class="hero-tag">ARCHITECTURAL DESIGNER & RESEARCHER</p>
+                <p class="hero-tag">건축학과 윤태일 | ARCHITECTURAL DESIGNER & RESEARCHER</p>
                 <h1 class="hero-title">
                     Boundaries of Light,<br>
                     <span>Void & Continuity.</span>
                 </h1>
                 <p class="hero-desc">
-                    빛과 공허(Void), 그리고 도시의 물리적 연속성을 탐구하는 건축학도 김진우의 포트폴리오입니다.
+                    빛과 공허(Void), 그리고 도시의 물리적 연속성을 탐구하는 건축학과 윤태일의 포트폴리오입니다.
                     단순한 형태적 미학을 넘어 사람과 커뮤니티가 호흡하는 장소성을 설계합니다.
                 </p>
                 <div class="hero-actions">
@@ -266,18 +266,85 @@
     <footer class="footer" id="contact">
         <div class="footer-inner">
             <div>
-                <p class="f-name">KIM JINWOO</p>
+                <p class="f-name">건축학과 윤태일</p>
                 <p class="f-sub">B.Arch Candidate, Dept of Architecture</p>
-                <p class="f-mail">Email: arch.jinwoo@example.ac.kr</p>
+                <p class="f-mail">Email: arch.taeil@example.ac.kr</p>
             </div>
             <div class="f-links">
-                <a href="#">Instagram @arch_jinwoo</a>
-                <a href="#">GitHub Repository</a>
+                <a href="#">Instagram @arch_taeil</a>
+                <a href="https://github.com/xodlfxodlf12-collab/arch_portfolil" target="_blank">GitHub Repository</a>
                 <a href="#">LinkedIn</a>
             </div>
         </div>
-        <div class="f-copy">© 2026 Architectural Portfolio. Built with Vibe Coding (Antigravity IDE).</div>
+        <div class="f-copy">© 2026 건축학과 윤태일 Architectural Portfolio. Built with Vibe Coding (Antigravity IDE).</div>
     </footer>
+
+    <!-- 🤖 Floating AI Docent Chatbot Widget -->
+    <!-- 1. Floating Action Button (FAB) -->
+    <button class="chatbot-fab" id="chatbot-fab" onclick="toggleChatbot()" title="AI 건축 도슨트와 대화하기">
+        <span>🏛️</span>
+        <span class="fab-badge"></span>
+    </button>
+
+    <!-- 2. Chatbot Main Window -->
+    <div class="chatbot-window" id="chatbot-window">
+        <!-- Header -->
+        <div class="chatbot-header">
+            <div class="cb-title-wrap">
+                <div class="cb-avatar">🏛️</div>
+                <div>
+                    <div class="cb-name">
+                        ARCHI-DOCENT
+                        <span class="cb-status rule-mode" id="cb-mode-badge">룰베이스 모드</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cb-actions">
+                <button class="cb-icon-btn" onclick="openChatConfig()" title="AI API 키 설정 (옵션 A 전환)">⚙️</button>
+                <button class="cb-icon-btn" onclick="toggleChatbot()" title="닫기">&times;</button>
+            </div>
+        </div>
+
+        <!-- Messages Area -->
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="cb-msg bot">
+                <div class="cb-msg-bubble">
+                    안녕하세요! 건축학과 윤태일의 <strong>AI 포트폴리오 도슨트</strong>입니다.<br><br>
+                    작품의 설계 개념, 3D 매싱 구조, 재료 및 동선 계획에 대해 질문해 주세요. 아래 추천 질문을 클릭하시면 바로 답변을 확인하실 수 있습니다! 😊
+                </div>
+            </div>
+        </div>
+
+        <!-- Suggested Question Chips (옵션 B 시나리오 룰베이스 추천 질문) -->
+        <div class="cb-chips-container" id="cb-chips-container">
+            <div class="cb-chip-label">💡 추천 질문 (클릭 시 즉시 답변):</div>
+            <button class="cb-chip" onclick="askChip('비움의 미술관 채광 원리가 뭐야?')">🏛️ 미술관 채광 원리</button>
+            <button class="cb-chip" onclick="askChip('3D 캔틸레버 구조는 어떻게 버티나요?')">🏢 캔틸레버 구조 원리</button>
+            <button class="cb-chip" onclick="askChip('어떤 친환경 재료를 사용했나요?')">🌿 지속가능 재료</button>
+            <button class="cb-chip" onclick="askChip('학생의 연락처와 인스타그램 알려줘')">📬 연락처 및 SNS</button>
+        </div>
+
+        <!-- Input Bar -->
+        <form class="chatbot-input-bar" id="chatbot-form" onsubmit="handleChatSubmit(event)">
+            <input type="text" class="cb-input" id="chatbot-input" placeholder="설계 의도나 궁금한 점을 입력하세요..." autocomplete="off">
+            <button type="submit" class="cb-send-btn" id="chatbot-send">➤</button>
+        </form>
+
+        <!-- Inline Config Overlay (Gemini API 설정) -->
+        <div class="cb-config-overlay" id="cb-config-overlay">
+            <h4 class="cb-config-title">⚙️ AI 도슨트 모드 설정</h4>
+            <p class="cb-config-desc">
+                • <strong>옵션 B (기본 룰베이스)</strong>: API 키 없이 안전하게 주요 질문 4~5개에 즉각 답변합니다.<br>
+                • <strong>옵션 A (Gemini 1.5 Flash 연동)</strong>: Google AI Studio에서 발급받은 무료 API 키를 넣으면 실제 AI와 자유 대화가 가능합니다. (키는 브라우저 로컬에만 임시 저장됩니다)
+            </p>
+            <input type="password" class="cb-config-input" id="cfg-gemini-key" placeholder="AI Studio에서 발급받은 Gemini API Key 붙여넣기 (AIzaSy...)">
+            <div class="cb-config-buttons">
+                <button type="button" class="btn-secondary" onclick="resetToRuleMode()" style="padding: 0.5rem 0.9rem; font-size: 0.8rem;">룰베이스 모드로 초기화</button>
+                <button type="button" class="btn-primary" onclick="saveApiKey()" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Gemini 연동 저장</button>
+                <button type="button" class="btn-secondary" onclick="closeChatConfig()" style="padding: 0.5rem 0.8rem; font-size: 0.8rem;">닫기</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
