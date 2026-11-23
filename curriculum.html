@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>건축학과 바이브 코딩 실습 로드맵 & 가이드</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Space+Grotesk:wght@500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0d11;
+            --surface: #131720;
+            --surface-card: #1a202c;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(94, 234, 212, 0.3);
+            --accent: #5eead4;
+            --accent-glow: rgba(94, 234, 212, 0.15);
+            --blue: #38bdf8;
+            --purple: #a855f7;
+            --text-main: #f3f4f6;
+            --text-sub: #9ca3af;
+            --text-muted: #6b7280;
+            --radius-lg: 16px;
+            --radius-md: 10px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            padding-bottom: 5rem;
+        }
+
+        /* Top Hero */
+        .header {
+            background: linear-gradient(180deg, rgba(20, 24, 33, 0.9) 0%, rgba(11, 13, 17, 0.4) 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 3.5rem 2rem 2.5rem 2rem;
+            text-align: center;
+        }
+        .tag {
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: var(--accent);
+            background: var(--accent-glow);
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border-accent);
+            margin-bottom: 1rem;
+        }
+        .title {
+            font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        .title span {
+            background: linear-gradient(90deg, var(--accent), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .desc {
+            max-width: 680px;
+            margin: 0 auto;
+            color: var(--text-sub);
+            font-size: 1.05rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1080px;
+            margin: 2.5rem auto 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Nav Pills */
+        .phase-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-sub);
+            padding: 0.75rem 1.6rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .tab-btn.active, .tab-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(94, 234, 212, 0.08);
+        }
+
+        /* Step Card */
+        .step-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .step-card:hover {
+            border-color: var(--border-accent);
+        }
+        .step-header {
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .step-badge {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .step-badge .num {
+            background: var(--accent);
+            color: #0b0d11;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        .step-time {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.3);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        .step-body {
+            padding: 2rem;
+        }
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .step-intro {
+            color: var(--text-sub);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        /* Teaching Points Grid */
+        .point-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .point-box {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            padding: 1.2rem;
+            border-radius: var(--radius-md);
+        }
+        .point-box h4 {
+            color: var(--accent);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .point-box p {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+
+        /* Prompt Template Box (AI 바이브코딩 프롬프트) */
+        .prompt-template {
+            background: #090b0e;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: var(--radius-md);
+            padding: 1.2rem;
+            margin-top: 1.2rem;
+        }
+        .prompt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.6rem;
+        }
+        .prompt-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--blue);
+            letter-spacing: 1px;
+        }
+        .btn-copy {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 3px 10px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-copy:hover {
+            background: var(--accent);
+            color: #000;
+        }
+        .prompt-code {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+
+        /* Checklist */
+        .checklist {
+            margin-top: 1.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px dashed var(--border);
+        }
+        .checklist h5 {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            margin-bottom: 0.6rem;
+        }
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            margin-bottom: 0.4rem;
+        }
+        .check-item input[type="checkbox"] {
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        /* Floating action bottom */
+        .launch-bar {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-accent);
+        }
+        .btn-live {
+            display: inline-block;
+            background: var(--accent);
+            color: #0b0d11;
+            font-weight: 700;
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1rem;
+            box-shadow: 0 0 25px rgba(94, 234, 212, 0.3);
+            transition: transform 0.2s;
+        }
+        .btn-live:hover {
+            transform: scale(1.04);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <span class="tag">ARCHITECTURE VIBE-CODING CURRICULUM</span>
+        <h1 class="title">건축학과 학생을 위한 <span>바이브 코딩 4단계 로드맵</span></h1>
+        <p class="desc">
+            복잡한 코딩 문법 대신, AI와 대화하며 나만의 인터랙티브 건축 포트폴리오를 기획·제작·배포하는 실습 커리큘럼입니다.
+        </p>
+    </header>
+
+    <div class="container">
+        <!-- Week 11: 바이브코딩 3 -->
+        <div class="step-card" id="week11">
+            <div class="step-header">
+                <div class="step-badge">
+                    <span class="num">1</span>
+                    <span>11주차: 프론트엔드 제작 & AI 도슨트 연결</span>
+                </div>
+                <span class="step-time">수업 시간: 2~3시간 소요</span>
+            </div>
+            <div class="step-body">
+                <h3 class="step-title">🏛️ 나만의 건축 포트폴리오 웹사이트 기초 구축</h3>
+                <p class="step-intro">
+                    학생이 지난 학기에 작업했던 패널, 렌더샷, 다이어그램을 웹페이지에 담고, 방문자에게 설계 의도를 말해주는 <strong>AI 도슨트(Gemini API)</strong>를 장착합니다.
+                </p>
+
+                <div class="point-grid">
+                    <div class="point-box">
+                        <h4>🎯 학생 전달 핵심 내용</h4>
+                        <p>• 웹사이트의 3대 뼈대(HTML 구조, CSS 스타일, JS 동작)의 역할을 감각적으로 이해하기<br>• PDF와 달리 반응형(PC/모바일)으로 작동하는 웹 갤러리의 장점</p>
+                    </div>
+                    <div class="point-box">
+                        <h4>💬 AI와 협업하는 방법 (바이브 코딩)</h4>
+                        <p>• "코드 다 짜줘" 대신 <strong>"내 설계 의도(보이드, 사괴석 담장)에 어울리는 차분한 다크모드 테마로 만들어줘"</strong>처럼 건축 어휘로 AI에게 지시하기</p>
+                    </div>
+                    <div class="point-box">
+                        <h4>🤖 무료 AI API 연동 실습</h4>
+                        <p>• Google AI Studio에서 무료 Gemini API Key 발급받기<br>• 방문자가 질문하면 내 프로젝트를 대변해 답해주는 큐레이터 챗봇 연결</p>
+                    </div>
+                </div>
+
+                <!-- Copiable Prompt Template -->
+                <div class="prompt-template">
+                    <div class="prompt-header">
+                        <span class="prompt-label">📌 학생들에게 제공할 AI 지시문 템플릿</span>
+                        <button class="btn-copy" onclick="copyPrompt('prompt-1')">복사하기</button>
+                    </div>
+                    <pre class="prompt-code" id="prompt-1">"나는 건축학과 4학년 김진우야. 지난 학기에 삼청동에 설계한 '비움의 미술관' 프로젝트가 있어.
+- 대지: 서울시 종로구 삼청동, 연면적 2,450㎡
+- 주요 컨셉: 사괴석 담장과 빛의 우물(천창 탑라이트)을 통한 보이드 공간
+이 내용을 바탕으로 웹사이트에서 카드 클릭 시 열리는 예쁜 모달 팝업 코드를 작성해줘.
+그리고 방문자가 천창 채광에 대해 물어보면 설명해 주는 AI 답변 예시도 만들어줘."</pre>
+                </div>
+
+                <div class="checklist">
+                    <h5>✅ 11주차 달성 체크리스트</h5>
+                    <div class="check-item"><input type="checkbox"> 내 스튜디오 작품 사진 2장 이상 갤러리에 교체하기</div>
+                    <div class="check-item"><input type="checkbox"> 프로젝트 카드 클릭 시 상세 모달 창 정상 동작 확인</div>
+                    <div class="check-item"><input type="checkbox"> AI 챗봇에 "미술관 채광 원리 알려줘" 질문 후 답변 받아보기</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week 12: 바이브코딩 4 -->
+        <div class="step-card" id="week12">
+            <div class="step-header">
+                <div class="step-badge">
+                    <span class="num">2</span>
+                    <span>12주차: 무료 웹 호스팅 & 모바일 링크 완성</span>
+                </div>
+                <span class="step-time">수업 시간: 1.5~2시간 소요</span>
+            </div>
+            <div class="step-body">
+                <h3 class="step-title">🌐 내 포트폴리오를 전 세계에 무료 배포하기 (Vercel / GitHub)</h3>
+                <p class="step-intro">
+                    내 컴퓨터(Localhost)에서만 보이던 웹사이트를 클릭 몇 번으로 실제 인터넷 주소(URL)로 배포하여 스마트폰으로 접속해봅니다.
+                </p>
+
+                <div class="point-grid">
+                    <div class="point-box">
+                        <h4>🎯 학생 전달 핵심 내용</h4>
+                        <p>• 로컬 실행(내 컴퓨터)과 웹 배포(서버 호스팅)의 차이점 이해<br>• Vercel / GitHub Pages를 이용한 완전 무료 영구 호스팅</p>
+                    </div>
+                    <div class="point-box">
+                        <h4>📱 모바일 반응형(Responsive) 점검</h4>
+                        <p>• 크롬 개발자 도구(F12) 모바일 보기 모드로 스마트폰 화면에서 레이아웃이 깨지지 않는지 AI에게 수정 요청하기</p>
+                    </div>
+                    <div class="point-box">
+                        <h4>🔒 보안 및 환경변수 주의점</h4>
+                        <p>• 무료 API 키가 깃허브 공개 저장소에 그대로 노출되지 않도록 하는 기본 보안 수칙 교육</p>
+                    </div>
+                </div>
+
+                <!-- Copiable Prompt Template -->
+                <div class="prompt-template">
+                    <div class="prompt-header">
+                        <span class="prompt-label">📌 학생들에게 제공할 AI 지시문 템플릿</span>
+                        <button class="btn-copy" onclick="copyPrompt('prompt-2')">복사하기</button>
+                    </div>
+                    <pre class="prompt-code" id="prompt-2">"스마트폰 화면에서 확인해보니까 3D 뷰어와 프로젝트 카드가 좌우로 삐져나와.
+아이폰이나 갤럭시 세로 모드(화면 너비 400px 이하)에서도 깔끔하게 1열로 정렬되도록 style.css의 미디어 쿼리를 보완해줘."</pre>
+                </div>
+
+                <div class="checklist">
+                    <h5>✅ 12주차 달성 체크리스트</h5>
+                    <div class="check-item"><input type="checkbox"> GitHub 리포지토리 생성 후 파일 푸시 완료</div>
+                    <div class="check-item"><input type="checkbox"> Vercel 무료 배포로 개인 전용 URL (예: jinwoo-arch.vercel.app) 획득</div>
+                    <div class="check-item"><input type="checkbox"> 스마트폰으로 내 링크 접속해 모바일 최적화 확인</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week 13: 바이브코딩 5 -->
+        <div class="step-card" id="week13">
+            <div class="step-header">
+                <div class="step-badge">
+                    <span class="num">3</span>
+                    <span>13주차: MCP 블렌더 3D 모델링 → 웹 뷰어 탑재</span>
+                </div>
+                <span class="step-time">수업 시간: 2~3시간 소요</span>
+            </div>
+            <div class="step-body">
+                <h3 class="step-title">🧊 AI로 3D 매스 모델링 자동화하고 웹에 마우스로 돌려보기</h3>
+                <p class="step-intro">
+                    최신 기술인 MCP(Model Context Protocol)를 이용해 AI에게 자연어로 블렌더(Blender) 3D 조작을 지시하고, 완성된 모델을 웹사이트 뷰어에 연동합니다.
+                </p>
+
+                <div class="point-grid">
+                    <div class="point-box">
+                        <h4>🎯 학생 전달 핵심 내용</h4>
+                        <p>• MCP 개념: AI가 텍스트만 출력하는 것을 넘어 내 컴퓨터의 소프트웨어(Blender)를 직접 조작하는 에이전트 워크플로우 경험</p>
+                    </div>
+                    <div class="point-box">
+                        <h4>📐 3D 매스 생성 및 재질 부여</h4>
+                        <p>• 파라메트릭 매스, 포디움 분절, 캔틸레버 형태 생성 지시<br>• 웹 3D 표준 규격인 `.gltf` / `.glb` 파일 형식 이해</p>
+                    </div>
+                    <div class="point-box">
+                        <h4>🕹️ Three.js 웹 뷰어 교체</h4>
+                        <p>• 11주차 웹사이트의 3D 캔버스 영역에 내가 익스포트한 3D 모델을 넣어 마우스 드래그로 돌려보기</p>
+                    </div>
+                </div>
+
+                <!-- Copiable Prompt Template -->
+                <div class="prompt-template">
+                    <div class="prompt-header">
+                        <span class="prompt-label">📌 학생들에게 제공할 AI 지시문 템플릿</span>
+                        <button class="btn-copy" onclick="copyPrompt('prompt-3')">복사하기</button>
+                    </div>
+                    <pre class="prompt-code" id="prompt-3">"Blender MCP를 사용해서 현대적인 미술관 콘셉트의 매스를 생성해줘:
+1. 바닥 면적 20x15m, 높이 4m의 하부 포디움
+2. 2층은 45도 회전된 12x12m 큐브 매스 (2m 캔틸레버 돌출)
+3. 외벽은 무광 콘크리트 재질, 중앙부는 유리 커튼월 보이드로 지정해줘.
+완성되면 WebGL 뷰어용 GLTF 포맷으로 저장하는 스크립트를 실행해줘."</pre>
+                </div>
+
+                <div class="checklist">
+                    <h5>✅ 13주차 달성 체크리스트</h5>
+                    <div class="check-item"><input type="checkbox"> 블렌더에서 자연어 프롬프트로 3D 오브젝트 생성 성공</div>
+                    <div class="check-item"><input type="checkbox"> glTF 파일 추출 후 웹 프로젝트 폴더로 복사</div>
+                    <div class="check-item"><input type="checkbox"> 웹 브라우저에서 마우스로 내 3D 모델 360도 회전 검토</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week 14: 최종 발표 -->
+        <div class="step-card" id="week14">
+            <div class="step-header">
+                <div class="step-badge">
+                    <span class="num">4</span>
+                    <span>14주차: Presentation (인터랙티브 웹 포트폴리오 시연)</span>
+                </div>
+                <span class="step-time">수업 시간: 5~7분 개인 발표</span>
+            </div>
+            <div class="step-body">
+                <h3 class="step-title">🎤 "내 건축을 말하는 AI" 라이브 프레젠테이션</h3>
+                <p class="step-intro">
+                    무거운 PPT 대신 본인이 직접 배포한 웹사이트 링크를 빔프로젝터에 띄우고 라이브로 시연하는 혁신적인 발표 평가를 진행합니다.
+                </p>
+
+                <div class="point-grid">
+                    <div class="point-box">
+                        <h4>📢 권장 발표 순서 (5분 스피치)</h4>
+                        <p>1. 내 설계 철학 소개 (Hero 섹션)<br>2. 대표 스튜디오 프로젝트 상세 다이어그램 설명<br>3. 3D 매스 뷰어 마우스 회전 시연<br>4. AI 도슨트에게 질문 던지고 답변 검증</p>
+                    </div>
+                    <div class="point-box">
+                        <h4>🏆 평가 지표 가이드</h4>
+                        <p>• 건축 설계 개념의 완성도 (30%)<br>• 바이브 코딩을 통한 웹 구현 및 모바일 반응도 (40%)<br>• AI 프롬프트 제어 및 3D 모델링 연계 창의성 (30%)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Launch Web Link Box -->
+        <div class="launch-bar">
+            <h3 style="margin-bottom: 0.8rem; font-size: 1.3rem;">지금 바로 완성된 샘플 웹사이트를 열어보세요!</h3>
+            <p style="color: var(--text-sub); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                학생들에게 보여줄 완성형 기준작(Reference)이 준비되어 있습니다.
+            </p>
+            <a href="index.html" class="btn-live" target="_blank">🏛️ 포트폴리오 웹사이트 데모 열기 ↗</a>
+        </div>
+    </div>
+
+    <script>
+        function copyPrompt(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('프롬프트 템플릿이 클립보드에 복사되었습니다! AI 채팅창에 붙여넣어 사용하세요.');
+            });
+        }
+    </script>
+</body>
+</html>

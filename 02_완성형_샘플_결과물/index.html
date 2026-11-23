@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JINWOO KIM | Architectural Portfolio</title>
+    <!-- Google Fonts: Space Grotesk & Pretendard fallback -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700&family=Space+Grotesk:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js CDN & GLTFLoader for Interactive 3D Massing Viewer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+<body>
+    <!-- Background Architectural Grid Line Effect -->
+    <div class="blueprint-grid"></div>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="logo">
+            <span class="logo-bold">ARCHI</span><span class="logo-light">FOLIO</span>
+            <span class="badge">STUDIO 2026</span>
+        </div>
+        <nav class="nav">
+            <a href="curriculum.html" style="color: var(--accent); font-weight: 700;">📖 수업로드맵</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#viewer-section">3D Massing</a>
+            <a href="#design-rationale">Design Rationale</a>
+            <a href="#contact" class="btn-nav">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="about">
+            <div class="hero-content">
+                <p class="hero-tag">ARCHITECTURAL DESIGNER & RESEARCHER</p>
+                <h1 class="hero-title">
+                    Boundaries of Light,<br>
+                    <span>Void & Continuity.</span>
+                </h1>
+                <p class="hero-desc">
+                    빛과 공허(Void), 그리고 도시의 물리적 연속성을 탐구하는 건축학도 김진우의 포트폴리오입니다.
+                    단순한 형태적 미학을 넘어 사람과 커뮤니티가 호흡하는 장소성을 설계합니다.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-primary">작품 둘러보기</a>
+                    <a href="#design-rationale" class="btn-secondary">
+                        <span class="sparkle">✦</span> 관점별 30초 핵심 브리핑
+                    </a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-num">06</span>
+                    <span class="stat-label">Studio Projects</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">02</span>
+                    <span class="stat-label">Competition Awards</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">3D</span>
+                    <span class="stat-label">Parametric & BIM</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Filter & Gallery -->
+        <section class="projects-section" id="projects">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Selected Works</h2>
+                    <p class="section-sub">2023 - 2026 학부 설계 스튜디오 및 공모전 작품</p>
+                </div>
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="cultural">Cultural</button>
+                    <button class="filter-btn" data-filter="residential">Residential</button>
+                    <button class="filter-btn" data-filter="urban">Urban & Public</button>
+                </div>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <article class="project-card" data-category="cultural" onclick="openProjectModal(1)">
+                    <div class="project-thumb">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80" alt="Void Museum" loading="lazy">
+                        <div class="project-overlay">
+                            <span>상세 다이어그램 & 해설 보기 ↗</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-cat">Cultural</span>
+                            <span class="project-year">2025.Fall / 4학년 2학기</span>
+                        </div>
+                        <h3 class="project-name">The Void Gallery : 비움의 미술관</h3>
+                        <p class="project-summary">도심 속 사괴석 담장과 빛의 우물을 이용한 중첩된 보이드 전시 공간 계획안</p>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card" data-category="urban" onclick="openProjectModal(2)">
+                    <div class="project-thumb">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80" alt="Urban Bridge Hub" loading="lazy">
+                        <div class="project-overlay">
+                            <span>상세 다이어그램 & 해설 보기 ↗</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-cat">Urban & Public</span>
+                            <span class="project-year">2025.Spring / 4학년 1학기</span>
+                        </div>
+                        <h3 class="project-name">Vertical Nexus : 수직 입체 보행로</h3>
+                        <p class="project-summary">단절된 철도 부지 상부를 입체 보행 데크와 복합 도서관으로 엮은 도시재생 마스터플랜</p>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card" data-category="residential" onclick="openProjectModal(3)">
+                    <div class="project-thumb">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="Courtyard House" loading="lazy">
+                        <div class="project-overlay">
+                            <span>상세 다이어그램 & 해설 보기 ↗</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-meta">
+                            <span class="project-cat">Residential</span>
+                            <span class="project-year">2024.Fall / 3학년 2학기</span>
+                        </div>
+                        <h3 class="project-name">Courtyard In-between : 사유의 중정 주택</h3>
+                        <p class="project-summary">전통 한옥의 마당 개념을 현대적 매스 분절과 스킵플로어로 재해석한 3세대 공유 주택</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 3D Massing & Design Inspection Section -->
+        <section class="viewer-section" id="viewer-section">
+            <div class="section-header center">
+                <span class="badge-blue">3D Interactive Spatial Study</span>
+                <h2 class="section-title">Interactive 3D Architectural Mass & Concept</h2>
+                <p class="section-sub">부재와 영역을 클릭하거나 모드를 전환하여 형태 생성 원리와 공간 조닝(Zoning)을 직접 검토할 수 있습니다.</p>
+            </div>
+
+            <div class="viewer-container">
+                <div id="three-canvas-wrap"></div>
+                <div class="viewer-controls">
+                    <div>
+                        <p class="control-title">SPATIAL ZONING & VIEW</p>
+                        <div class="control-panel">
+                            <button class="v-btn active" id="btn-mode-wire">Wireframe / Clay 모드</button>
+                            <button class="v-btn" id="btn-mode-rotate">Auto Rotate ON</button>
+                            <button class="v-btn" id="btn-mode-reset">Reset View</button>
+                            <!-- GLTF/GLB Upload -->
+                            <label class="v-btn upload-btn" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+                                <span>📁 내 3D 모델 업로드 (.glb/.gltf)</span>
+                                <input type="file" id="gltf-file-input" accept=".glb,.gltf" style="display: none;" onchange="handleModelUpload(event)">
+                            </label>
+                            <div class="model-guide-notice">
+                                <span class="guide-badge">💡 3D 모델 최적화 권장사항</span>
+                                <p>• <strong>권장 용량:</strong> 빠른 웹 로딩을 위해 <strong>개당 5MB ~ 25MB 이하</strong> 권장</p>
+                                <p>• <strong>배포 경로:</strong> <code>models/building.glb</code>에 넣으면 자동 로드</p>
+                                <p>• <strong>지원 포맷:</strong> .glb(단일 바이너리 권장), .gltf</p>
+                            </div>
+                        </div>
+
+                        <p class="control-title" style="margin-top: 1.5rem;">EXPLORE KEY ELEMENTS</p>
+                        <div class="control-panel">
+                            <button class="v-btn part-btn" onclick="highlightPart('podium')">🏛️ 기단부 (Public Podium)</button>
+                            <button class="v-btn part-btn" onclick="highlightPart('tower')">🏢 캔틸레버 매스 (Cantilever)</button>
+                            <button class="v-btn part-btn" onclick="highlightPart('atrium')">✨ 유리 아트리움 (Light Void)</button>
+                            <button class="v-btn part-btn" onclick="highlightPart('roof')">☁️ 플로팅 캐노피 (Floating Roof)</button>
+                        </div>
+                    </div>
+
+                    <div class="mass-annotation-box" id="mass-annotation">
+                        <span class="anno-tag">DESIGN ELEMENT</span>
+                        <h4 id="anno-title">전체 매스 (Overall Massing)</h4>
+                        <p id="anno-desc">포디움과 타워, 유리 보이드의 중첩을 통해 도심 공공성과 내부 프로그램의 프라이버시를 동시에 확보한 입체 배치 계획입니다.</p>
+                    </div>
+
+                    <div class="viewer-specs">
+                        <div class="spec-item">
+                            <span>SITE AREA</span>
+                            <strong>3,420 ㎡</strong>
+                        </div>
+                        <div class="spec-item">
+                            <span>G.F.A</span>
+                            <strong>7,810 ㎡</strong>
+                        </div>
+                        <div class="spec-item">
+                            <span>STRUCTURE</span>
+                            <strong>SRC + Steel Truss</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architectural Design Rationale & Evaluator Briefing Section -->
+        <section class="docent-section" id="design-rationale">
+            <div class="rationale-card">
+                <div class="rationale-header">
+                    <div>
+                        <span class="badge-blue">Audience-Tailored Briefing</span>
+                        <h3 class="rationale-title">설계 의도 및 관점별 30초 브리핑</h3>
+                        <p class="rationale-sub">심사위원과 평가자의 관심 영역(조형·동선·구조·도시 맥락)을 선택하여 핵심 설계 전략을 즉시 검토하세요.</p>
+                    </div>
+                    <div class="rationale-tabs">
+                        <button class="r-tab active" onclick="switchBriefing('concept')">📐 조형 & 공간 개념</button>
+                        <button class="r-tab" onclick="switchBriefing('urban')">🏙️ 도시 & 보행 동선</button>
+                        <button class="r-tab" onclick="switchBriefing('structure')">🏗️ 구조 & 지속가능 재료</button>
+                        <button class="r-tab" onclick="switchBriefing('computational')">⚡ 테크 & 설계 프로세스</button>
+                    </div>
+                </div>
+
+                <div class="briefing-display" id="briefing-display">
+                    <!-- Populated dynamically via script.js -->
+                </div>
+
+                <!-- Computational Design & Tech Stack Proof -->
+                <div class="computational-workflow">
+                    <h4 class="workflow-title">⚙️ 학생의 디지털 툴체인 및 컴퓨테이셔널 분석 역량</h4>
+                    <div class="workflow-grid">
+                        <div class="wf-item">
+                            <span class="wf-step">01. Spatial Logic</span>
+                            <strong>Rhino + Grasshopper</strong>
+                            <p>부지 경사도 및 일조 조건에 따른 매스 분절 알고리즘 생성</p>
+                        </div>
+                        <div class="wf-item">
+                            <span class="wf-step">02. Environmental Study</span>
+                            <strong>Ladybug / Daylight Sim</strong>
+                            <p>계절별 직사광 차단 루버 각도 및 산란광 투과율 최적화</p>
+                        </div>
+                        <div class="wf-item">
+                            <span class="wf-step">03. Digital Fabrication</span>
+                            <strong>Blender + 3D Printing</strong>
+                            <p>3D 스튜디오 매스 모형 제작 및 웹 인터랙티브 WebGL 모델링 연계</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Detail Modal -->
+    <div class="modal-backdrop" id="project-modal" onclick="closeProjectModal(event)">
+        <div class="modal-box">
+            <button class="btn-close" onclick="closeProjectModal()">&times;</button>
+            <div class="modal-content" id="modal-content-body">
+                <!-- Dynamically populated via script.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-inner">
+            <div>
+                <p class="f-name">KIM JINWOO</p>
+                <p class="f-sub">B.Arch Candidate, Dept of Architecture</p>
+                <p class="f-mail">Email: arch.jinwoo@example.ac.kr</p>
+            </div>
+            <div class="f-links">
+                <a href="#">Instagram @arch_jinwoo</a>
+                <a href="#">GitHub Repository</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+        <div class="f-copy">© 2026 Architectural Portfolio. Built with Vibe Coding (Antigravity IDE).</div>
+    </footer>
+
+    <!-- 🤖 Floating AI Docent Chatbot Widget -->
+    <!-- 1. Floating Action Button (FAB) -->
+    <button class="chatbot-fab" id="chatbot-fab" onclick="toggleChatbot()" title="AI 건축 도슨트와 대화하기">
+        <span>🏛️</span>
+        <span class="fab-badge"></span>
+    </button>
+
+    <!-- 2. Chatbot Main Window -->
+    <div class="chatbot-window" id="chatbot-window">
+        <!-- Header -->
+        <div class="chatbot-header">
+            <div class="cb-title-wrap">
+                <div class="cb-avatar">🏛️</div>
+                <div>
+                    <div class="cb-name">
+                        ARCHI-DOCENT
+                        <span class="cb-status rule-mode" id="cb-mode-badge">룰베이스 모드</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cb-actions">
+                <button class="cb-icon-btn" onclick="openChatConfig()" title="AI API 키 설정 (옵션 A 전환)">⚙️</button>
+                <button class="cb-icon-btn" onclick="toggleChatbot()" title="닫기">&times;</button>
+            </div>
+        </div>
+
+        <!-- Messages Area -->
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="cb-msg bot">
+                <div class="cb-msg-bubble">
+                    안녕하세요! 건축학도 김진우의 <strong>AI 포트폴리오 도슨트</strong>입니다.<br><br>
+                    작품의 설계 개념, 3D 매싱 구조, 재료 및 동선 계획에 대해 질문해 주세요. 아래 추천 질문을 클릭하시면 바로 답변을 확인하실 수 있습니다! 😊
+                </div>
+            </div>
+        </div>
+
+        <!-- Suggested Question Chips (옵션 B 시나리오 룰베이스 추천 질문) -->
+        <div class="cb-chips-container" id="cb-chips-container">
+            <div class="cb-chip-label">💡 추천 질문 (클릭 시 즉시 답변):</div>
+            <button class="cb-chip" onclick="askChip('비움의 미술관 채광 원리가 뭐야?')">🏛️ 미술관 채광 원리</button>
+            <button class="cb-chip" onclick="askChip('3D 캔틸레버 구조는 어떻게 버티나요?')">🏢 캔틸레버 구조 원리</button>
+            <button class="cb-chip" onclick="askChip('어떤 친환경 재료를 사용했나요?')">🌿 지속가능 재료</button>
+            <button class="cb-chip" onclick="askChip('학생의 연락처와 인스타그램 알려줘')">📬 연락처 및 SNS</button>
+        </div>
+
+        <!-- Input Bar -->
+        <form class="chatbot-input-bar" id="chatbot-form" onsubmit="handleChatSubmit(event)">
+            <input type="text" class="cb-input" id="chatbot-input" placeholder="설계 의도나 궁금한 점을 입력하세요..." autocomplete="off">
+            <button type="submit" class="cb-send-btn" id="chatbot-send">➤</button>
+        </form>
+
+        <!-- Inline Config Overlay (Gemini API 설정) -->
+        <div class="cb-config-overlay" id="cb-config-overlay">
+            <h4 class="cb-config-title">⚙️ AI 도슨트 모드 설정</h4>
+            <p class="cb-config-desc">
+                • <strong>옵션 B (기본 룰베이스)</strong>: API 키 없이 안전하게 주요 질문 4~5개에 즉각 답변합니다.<br>
+                • <strong>옵션 A (Gemini 1.5 Flash 연동)</strong>: Google AI Studio에서 발급받은 무료 API 키를 넣으면 실제 AI와 자유 대화가 가능합니다. (키는 브라우저 로컬에만 임시 저장됩니다)
+            </p>
+            <input type="password" class="cb-config-input" id="cfg-gemini-key" placeholder="AI Studio에서 발급받은 Gemini API Key 붙여넣기 (AIzaSy...)">
+            <div class="cb-config-buttons">
+                <button type="button" class="btn-secondary" onclick="resetToRuleMode()" style="padding: 0.5rem 0.9rem; font-size: 0.8rem;">룰베이스 모드로 초기화</button>
+                <button type="button" class="btn-primary" onclick="saveApiKey()" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Gemini 연동 저장</button>
+                <button type="button" class="btn-secondary" onclick="closeChatConfig()" style="padding: 0.5rem 0.8rem; font-size: 0.8rem;">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
